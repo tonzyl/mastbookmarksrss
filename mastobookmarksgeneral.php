@@ -1,5 +1,6 @@
 <?php
-    // Function to fetch bookmarks
+// Code created with assistance of GitHub co-pilot    
+// Function to fetch bookmarks
     function get_bookmarks($api_url, $access_token) {
         $headers = array(
             'Authorization: Bearer ' . $access_token
