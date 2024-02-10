@@ -11,7 +11,12 @@
         $response = curl_exec($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-
+        /* should there be more bookmarks than the 20 or 40 limit in the api call the link header of the response will contain pagination
+        see https://docs.joinmastodon.org/methods/bookmarks/#query-parameters for that. parsing the Link header, which this code does not do,
+        would allow you to do repeated calls to the api for bookmarks. This is only useful for your old bookmarks should you have many. Once you run this
+        script moving forward it will be complete (provided you do not bookmark more than 20 to 40 messages in the interval your feedreader
+        uses to refresh feeds.
+        */        
         if ($http_code == 200) {
             $bookmarks = json_decode($response, true);
             return $bookmarks;
