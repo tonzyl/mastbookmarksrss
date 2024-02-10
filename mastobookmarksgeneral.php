@@ -5,7 +5,7 @@
         $headers = array(
             'Authorization: Bearer ' . $access_token
         );
-        $ch = curl_init($api_url . '/api/v1/bookmarks');
+        $ch = curl_init($api_url . '/api/v1/bookmarks'); /* this loads at most 20 bookmarks by default. you can load at most 40 by using /api/v1/bookmarks?limit=40 */
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         $response = curl_exec($ch);
